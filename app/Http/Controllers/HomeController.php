@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::all();
+        $contacts = auth()->user()->contacts()->paginate(10);
 
         return view('home', compact('contacts'));
     }

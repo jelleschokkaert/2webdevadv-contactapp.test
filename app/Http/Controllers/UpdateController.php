@@ -11,6 +11,10 @@ class UpdateController extends Controller
     {
         $contact = Contact::find($id);
 
+        if ($contact->user_id !== auth()->user()->id) {
+            return redirect()->route('contacts.index')->with('status', 'You are not allowed to edit this contact');
+        }
+
         return view('form', compact('contact'));
     }
 

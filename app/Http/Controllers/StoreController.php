@@ -18,6 +18,7 @@ class StoreController extends Controller
             $contact = Contact::find($id);
         }
 
+        $contact->user_id = auth()->user()->id;
         $contact->firstname = $request->input('firstname');
         $contact->lastname = $request->input('lastname');
         $contact->email = $request->input('email');
